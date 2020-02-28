@@ -1,2 +1,2 @@
-# open-pet-id
-Secure your pet!
+# OpenPetId
+ID your pet!
