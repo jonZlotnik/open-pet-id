@@ -1,6 +1,8 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+
+    context.log( req.headers['x-ms-client-principal-name'] );
     context.log('HTTP trigger function processed a request.');
     const name = (req.query.name || (req.body && req.body.name));
     const responseMessage = name
