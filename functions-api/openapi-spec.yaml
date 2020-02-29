@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: This is the REST API for OpenPetID
-  version: "1.0.0-oas3"
+  version: "1.0.0"
   title: OpenPetID API
   contact:
     email: contact@jonzlotnik.ca
@@ -10,41 +10,25 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 tags:
   - name: owners
-    description: Authenticated pet owners only.
-  - name: guests
+    description: Operations for authenticated pet owners to manage their pets.
+  - name: public
     description: Operations available to anyone.
 paths:
-  /inventory:
+  /pets/{petId}:
     get:
       tags:
-        - developers
-      summary: searches inventory
-      operationId: searchInventory
+        - owners
+      summary: Get pet data.
+      operationId: getPet
       description: |
-        By passing in the appropriate options, you can search for
-        available inventory in the system
+        Returns all data stored under the pet's UID.
       parameters:
-        - in: query
-          name: searchString
-          description: pass an optional search string for looking up inventory
-          required: false
+        - in: path
+          name: petId
+          description: Pet UID.
+          required: true
           schema:
             type: string
-        - in: query
-          name: skip
-          description: number of records to skip for pagination
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - in: query
-          name: limit
-          description: maximum number of records to return
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-            maximum: 50
       responses:
         '200':
           description: search results matching criteria
@@ -56,28 +40,34 @@ paths:
                   $ref: '#/components/schemas/InventoryItem'
         '400':
           description: bad input parameter
-    post:
+    put:
       tags:
-        - admins
-      summary: adds an inventory item
-      operationId: addInventory
+        - owners
+      summary: Updates pet data
+      operationId: updatePet
       description: Adds an item to the system
       responses:
         '201':
-          description: item created
+          description: item updated
         '400':
           description: 'invalid input, object invalid'
-        '409':
-          description: an existing item already exists
+      parameters:
+        - in: path
+          name: petId
+          description: Pet UID.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/InventoryItem'
         description: Inventory item to add
+
 servers:
   - url: 'https://virtserver.swaggerhub.com/jonZlotnik/OpenPetID/1.0.0'
-  - url: 'https://openpetid.azurewebsites.net/api'
+  - url: 'https://openpetid-apim.azure-api.net/v1'
 components:
   schemas:
     InventoryItem:
