@@ -1,9 +1,9 @@
-# OpenPetId
+## OpenPetId
 Marihacks Workshop 2020: A fun project idea.
 
-## Instructions for workshop
+# Instructions for workshop
 
-### Generally good things
+## Generally good things
 
 1. Install VSCode ( https://code.visualstudio.com/download )
 1. Install git ( https://git-scm.com/downloads )
@@ -14,7 +14,7 @@ Marihacks Workshop 2020: A fun project idea.
     - cURL ( https://curl.haxx.se/download.html or `sudo apt install curl` )
 1. If you're on a Debian-based Linux distro, install and run `cmatrix` so that muggles believe that you're a 1337 h4x0r --- `$ sudo apt install cmatrix && cmatrix`
 
-### Things for this workshop
+## Things for this workshop
 
 1. Install the VSCode extensions below ( under 'Useful Resources' )
 1. Clone this repo --- `$ git clone https://github.com/jonZlotnik/open-pet-id.git` 
@@ -23,9 +23,9 @@ Marihacks Workshop 2020: A fun project idea.
 1. I've got the rest for you on stage ( look up at me 😁 ).
 
 
-## Useful Resources
+# Useful Resources
 
-### VSCode Extensions
+## VSCode Extensions
 
 - OpenAPI (Swagger) Editor
 
@@ -36,8 +36,23 @@ https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi
 https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 
 
-## Learning Resources
+# Learning Resources
 
-### OAuth 2.0 and OpenID Connect
+## OpenAPI 3.0
 
-https://www.youtube.com/watch?v=996OiexHze0
+- https://swagger.io/docs/specification/about/
+- https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md
+
+### Specifying OAuth 2.0 and OIDC in OpenAPI 
+
+- https://swagger.io/docs/specification/authentication/
+- https://swagger.io/docs/specification/authentication/oauth2/
+- https://swagger.io/docs/specification/authentication/openid-connect-discovery/
+
+## Microsoft Azure
+
+- https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-google
+
+## OAuth 2.0 and OpenID Connect
+
+- https://www.youtube.com/watch?v=996OiexHze0
