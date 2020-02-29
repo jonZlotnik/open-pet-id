@@ -14,6 +14,7 @@ ID your pet! A fun project idea for Marihacks Workshop 2020.
 1. Install the VSCode extensions below ( under 'Useful Resources' )
 1. Clone this repo --- `$ git clone https://github.com/jonZlotnik/open-pet-id.git` 
 1. Open repo in VSCode --- `$ code ./open-pet-id` 
+1. Install node packages --- `$ cd ./open-pet-id/functions-api && npm install`
 1. I've got the rest for you on stage ( look up at me 😁 ).
 
 
