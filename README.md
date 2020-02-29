@@ -1,5 +1,5 @@
 # OpenPetId
-ID your pet! A fun project idea for Marihacks Workshop 2020.
+Marihacks Workshop 2020: A fun project idea.
 
 ## Instructions for workshop
 
@@ -8,6 +8,8 @@ ID your pet! A fun project idea for Marihacks Workshop 2020.
 1. Install VSCode ( https://code.visualstudio.com/download )
 1. Install git ( https://git-scm.com/downloads )
 1. Install nodejs ( https://nodejs.org/en/download/ )
+1. Create Microsoft account so that you can login to the Azure Portal ( https://portal.azure.com )
+1. If you're on a Debian-based Linux distro, install and run `cmatrix` so that muggles believe that you're a 1337 h4x0r --- `$ sudo apt install cmatrix && cmatrix`
 
 ### Things for this workshop
 
