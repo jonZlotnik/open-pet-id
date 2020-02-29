@@ -10,7 +10,7 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 tags:
   - name: owners
-    description: Operations for authenticated pet owners to manage their pets.
+    description: Operations for authenticated pet owners to manage their pets data.
   - name: public
     description: Operations available to anyone.
 paths:
@@ -76,35 +76,45 @@ components:
       type: "object"
       required:
       - "name"
-      - "photoUrls"
       properties:
         id:
           type: "integer"
           format: "int64"
-        # category:
-        #   $ref: "#/definitions/Category"
+        species:
+          type: "string"
+          example: "Petite Goldendoodle"
         name:
           type: "string"
-          example: "doggie"
+          example: "Milo Bear"
         photoUrls:
           type: "array"
-          xml:
-            name: "photoUrl"
-            wrapped: true
           items:
             type: "string"
-        # tags:
-        #   type: "array"
-        #   xml:
-        #     name: "tag"
-        #     wrapped: true
-          # items:
-          #   $ref: "#/definitions/Tag"
+        owner:
+          type: "string"
+          format: "uuid"
+        info:
+         type: "array"
+         items:
+           $ref: "#/components/schemas/InfoItem"
         status:
           type: "string"
-          description: "pet status in the store"
+          description: "pet status"
           enum:
-          - "available"
-          - "pending"
-          - "sold"
+          - "safe"
+          - "lost"
+          - "dead"
+          
+    InfoItem:
+      type: "object"
+      properties:
+        level:
+          type: "string"
+          description: "importance of the info item"
+          enum: 
+          - "info"
+          - "important"
+          - "critical"
+        value:
+          type: "string"
       
