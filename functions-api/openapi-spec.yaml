@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  description: This is the REST API for OpenPetID
+  version: "1.0.0"
+  title: OpenPetID API
+  contact:
+    email: contact@jonzlotnik.ca
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: owners
+    description: Operations for authenticated pet owners to manage their pets data.
+  - name: public
+    description: Operations available to anyone.
+paths:
+  /pets/{petId}:
+    get:
+      tags:
+        - owners
+      summary: Get pet data.
+      operationId: getPet
+      description: |
+        Returns all data stored under the pet's UID.
+      parameters:
+        - in: path
+          name: petId
+          description: Pet UID.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: pet data under pet's UID
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Pet'
+        '404':
+          description: 'no pet with specified UID'
+    put:
+      tags:
+        - owners
+      summary: Updates pet data
+      operationId: updatePet
+      description: Overwrites/updates data under the pet's UID.
+      responses:
+        '201':
+          description: Pet updated
+        '400':
+          description: 'invalid input, object invalid'
+        '404':
+          description: 'no pet with sepcified UID'
+      parameters:
+        - in: path
+          name: petId
+          description: Pet UID.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        description: Pet updated
+
+servers:
+  - url: 'https://virtserver.swaggerhub.com/jonZlotnik/OpenPetID/1.0.0'
+  - url: 'https://openpetid-apim.azure-api.net/v1'
+components:
+  schemas:
+    Pet:
+      type: "object"
+      required:
+      - "name"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        species:
+          type: "string"
+          example: "Petite Goldendoodle"
+        name:
+          type: "string"
+          example: "Milo Bear"
+        photoUrls:
+          type: "array"
+          items:
+            type: "string"
+        owner:
+          type: "string"
+          format: "uuid"
+        info:
+         type: "array"
+         items:
+           $ref: "#/components/schemas/InfoItem"
+        status:
+          type: "string"
+          description: "pet status"
+          enum:
+          - "safe"
+          - "lost"
+          - "dead"
+          
+    InfoItem:
+      type: "object"
+      properties:
+        level:
+          type: "string"
+          description: "importance of the info item"
+          enum: 
+          - "info"
+          - "important"
+          - "critical"
+        value:
+          type: "string"
+      
